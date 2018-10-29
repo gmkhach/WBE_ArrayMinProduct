@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Given an array of integers write a method that will return the smallest possible products of any two integers in the array. 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +44,7 @@ namespace ArrayMaxProduct
             int max1 = min2;
             int max2 = min1;
 
+            // iterrate through the array and find the two biggest and the two smallest integers
             for (int i = 2; i < arr.Length; i++)
             {
                 if (arr[i] < min1)
@@ -61,14 +66,18 @@ namespace ArrayMaxProduct
                     max2 = arr[i];
                 }
             }
-            if (min2 < 0 && max1 < 0)
+
+            // if there are negative numbers only in the array return the product of the largest two
+            if (max1 < 0)
             {
                 return max1 * max2;
             }
-            else if (min2 <= 0 && max1 >=0)
+            // if there is at least one non-negative number return the product of the smallest number and the largest non-negative number
+            else if (min1 < 0 && max1 >=0)
             {
                 return min1 * max1;
             }
+            // otherwise always return the product of the smallest two numbers
             else 
             {
                 return min1 * min2;
